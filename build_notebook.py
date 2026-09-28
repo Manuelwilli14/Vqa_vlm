@@ -43,11 +43,19 @@ cells = [
     ),
     md("## 1. Vérifier le GPU"),
     code("!nvidia-smi"),
-    md("## 2. Dépendances\n\nTorch (avec CUDA) et Pillow sont déjà installés sur Colab/Kaggle — on ne touche qu'aux autres paquets. "
-       "Ne pas ajouter `pillow` ici : Colab l'a déjà chargé en mémoire, le mettre à jour mélange deux versions "
-       "(`ImportError: cannot import name '_Ink'`).\n\n"
-       "Si Colab demande malgré tout de **redémarrer la session** après cette cellule, accepte puis reprends à la section 4."),
-    code("!pip install -q -U transformers accelerate gradio"),
+    md("## 2. Dépendances\n\nTorch (avec CUDA) et Pillow sont déjà installés sur Colab/Kaggle — on met à jour le reste, "
+       "**en figeant Pillow** à la version que Colab a déjà chargée en mémoire. Si pip la changeait, le code mélangerait "
+       "deux versions de Pillow et planterait (`ImportError: cannot import name '_Ink'`)."),
+    code(
+        "import PIL\n"
+        "\n"
+        "# Fige Pillow à la version déjà en mémoire pour que pip n'y touche pas,\n"
+        "# même si une dépendance (gradio...) voudrait la mettre à jour.\n"
+        "with open(\"pillow-pin.txt\", \"w\") as f:\n"
+        "    f.write(f\"pillow=={PIL.__version__}\\n\")\n"
+        "\n"
+        "!pip install -q -U transformers accelerate gradio -c pillow-pin.txt\n"
+    ),
     md("## 3. Fichiers du projet\n\nMêmes fichiers que le repo GitHub, générés ici pour que le notebook soit autonome."),
     writefile_cell("vqa_engine.py", vqa_engine_src),
     writefile_cell("app.py", app_src),
