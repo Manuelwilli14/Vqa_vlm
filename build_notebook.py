@@ -43,8 +43,11 @@ cells = [
     ),
     md("## 1. Vérifier le GPU"),
     code("!nvidia-smi"),
-    md("## 2. Dépendances\n\nTorch est déjà installé (avec CUDA) sur Colab/Kaggle — on ne touche qu'aux autres paquets."),
-    code("!pip install -q -U transformers accelerate gradio pillow"),
+    md("## 2. Dépendances\n\nTorch (avec CUDA) et Pillow sont déjà installés sur Colab/Kaggle — on ne touche qu'aux autres paquets. "
+       "Ne pas ajouter `pillow` ici : Colab l'a déjà chargé en mémoire, le mettre à jour mélange deux versions "
+       "(`ImportError: cannot import name '_Ink'`).\n\n"
+       "Si Colab demande malgré tout de **redémarrer la session** après cette cellule, accepte puis reprends à la section 4."),
+    code("!pip install -q -U transformers accelerate gradio"),
     md("## 3. Fichiers du projet\n\nMêmes fichiers que le repo GitHub, générés ici pour que le notebook soit autonome."),
     writefile_cell("vqa_engine.py", vqa_engine_src),
     writefile_cell("app.py", app_src),
