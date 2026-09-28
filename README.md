@@ -17,6 +17,8 @@ image/question :
 | **Comptage précis** | Liste chaque instance une par une avant de compter (les VLM comptent mal en zero-shot direct — lister d'abord aide beaucoup) |
 | **Vérification** | Brouillon de réponse, puis re-vérification explicite avant la réponse finale |
 
+![alt text](image.png)
+
 ## Structure
 
 ```
