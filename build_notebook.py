@@ -81,13 +81,6 @@ cells = [
         "\n"
         "demo.launch(share=True, debug=True)\n"
     ),
-    md(
-        "## Pour aller plus loin",
-        "",
-        "- Change `MODEL_NAME` dans `vqa_engine.py` (cellule 3) pour essayer `Qwen/Qwen2.5-VL-7B-Instruct` si le GPU a assez de VRAM.",
-        "- Ajoute un mode de prompt dans `PROMPT_MODES` et compare-le aux 4 existants sur la même image+question.",
-        "- Une fois content du résultat, télécharge `vqa_engine.py` / `app.py` (mis à jour si tu les as modifiés ici) pour les pousser sur GitHub à côté de ce notebook.",
-    ),
 ]
 
 notebook = {
