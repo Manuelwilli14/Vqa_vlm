@@ -1,0 +1,8 @@
+# torch: on Colab/Kaggle a CUDA-enabled build is already installed — don't
+# reinstall it there (see notebooks/vqa_colab_kaggle.ipynb). Elsewhere, get
+# the right CUDA build for your GPU from https://pytorch.org/get-started/locally/
+torch
+transformers>=4.49
+accelerate
+gradio
+pillow
